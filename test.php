@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__.'/vendor/autoload.php');
-use nitin\voluumapi\voluumwrap;
+use paliwalnitin\voluumwrap\voluumwrap;
 
 $vrc = new voluumwrap();
 $vrc->login('contact@mytokri.com', '@>#:e\\3&AZQqNN_k');

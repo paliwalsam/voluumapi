@@ -1,5 +1,5 @@
 <?php
-namespace nitin\voluumapi;
+namespace paliwalnitin\voluumwrap;
 class VoluumHelper {
 	
 	const VOLUUM_TIME_FORMAT = 'Y-m-d\TH:i:s\Z';

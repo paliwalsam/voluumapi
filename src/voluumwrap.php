@@ -1,6 +1,7 @@
-<?php namespace nitin\voluumapi;
+<?php 
+namespace paliwalnitin\voluumwrap;
 use GuzzleHttp\Client;
-use nitin\voluumapi\VoluumHelper;
+use paliwalnitin\voluumwrap\VoluumHelper;
 
 class voluumwrap 
 {

@@ -13,9 +13,9 @@ class ComposerStaticInit9eecd7502b7d21192cc70d04548abd97
     );
 
     public static $prefixLengthsPsr4 = array (
-        'n' => 
+        'p' => 
         array (
-            'nitin\\voluumapi\\' => 16,
+            'paliwalnitin\\voluumwrap\\' => 24,
         ),
         'P' => 
         array (
@@ -30,7 +30,7 @@ class ComposerStaticInit9eecd7502b7d21192cc70d04548abd97
     );
 
     public static $prefixDirsPsr4 = array (
-        'nitin\\voluumapi\\' => 
+        'paliwalnitin\\voluumwrap\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

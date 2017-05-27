@@ -1,12 +1,12 @@
 {
-    "name": "nitin/voluumwrap",
+    "name": "paliwalnitin/voluumwrap",
     "description": "A PHP Api Wrapper for the Voluum Reporting API",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "Nitin Paliwal",
-            "email": "nitin@mytokri.com"
+            "email": "paliwal.sam@gmail.com"
         }
     ],
     "require": {
@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "nitin\\voluumapi\\": "src"
+            "paliwalnitin\\voluumwrap\\": "src"
         }
     }
 }
