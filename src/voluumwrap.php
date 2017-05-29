@@ -6,6 +6,7 @@ use paliwalnitin\voluumwrap\VoluumHelper;
 class voluumwrap 
 {
 	const VOLUUM_REPORTING_BASE_URI = 'https://reports.voluum.com/report';
+	const VOLUUM_LANDER_BASE_URI = 'https://api.voluum.com/lander';
 	const VOLUUM_LOGIN_BASE_URI = 'https://security.voluum.com/login';
 	
 	private $client;
@@ -56,8 +57,8 @@ class voluumwrap
 		return false;
 	}
 
-	function query($params, $decodeJson = true){
-		$res = $this->client->request('GET', '', [
+	function query($url, $params, $decodeJson = true){
+		$res = $this->client->request('GET', $url, [
 			'headers' => ['cwauth-token' => $this->authToken],
 			'query' => $params
 		]);
@@ -68,6 +69,37 @@ class voluumwrap
 			return $res->getBody();
 		}
 		
+	}
+
+	function landerReport( $id='', $dateRange = 'last-30-days')	{
+		$params = [
+			'sort' => 'visits',
+			'direction' => 'desc',
+			'offset' => '0',
+			'limit' => '1000',
+		];
+		$url=self::VOLUUM_LANDER_BASE_URI;
+		if(strlen($id)>0)
+			$url=$url.'/'.$id;
+
+		$params = array_merge(VoluumHelper::dateRangeFromSlug($dateRange), $params);
+		$result = $this->query($url,$params);
+		if(strlen($id)>0)
+			return $result;
+		else
+			return $result['landers'];
+	}
+
+	function updateLander($id='', $landerdata)	{
+	 	$landerdata= json_encode($landerdata);
+		$url=self::VOLUUM_LANDER_BASE_URI;
+		$url=$url.'/'.$id;
+		$res = $this->client->request('PUT',$url,[
+			'headers' => ["content-type"=>"application/json",'cwauth-token' => $this->authToken],
+			'body' => $landerdata
+		]);
+		$res = json_decode($res->getBody());
+		return $res;
 	}
 
 	function campaignReport($campaignId, $dateRange = 'last-30-days', $groupBy = 'day'){
@@ -82,7 +114,7 @@ class voluumwrap
 		];
 		// Add To / From and TZ to params
 		$params = array_merge(VoluumHelper::dateRangeFromSlug($dateRange), $params);
-		$result = $this->query($params);
+		$result = $this->query(self::VOLUUM_REPORTING_BASE_URI,$params,false);
 		return $result['rows'];
 	}
 	
