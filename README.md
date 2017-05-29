@@ -1,6 +1,4 @@
-# Project Title
-
-Voluum api php wrapper
+# Voluum api php wrapper
 
 ## Getting Started
 
@@ -11,7 +9,7 @@ Voluumwrap is php client that makes it easy to get and send voluum requests and 
 composer require paliwalnitin/voluumwrap
 
 
-## Authors
+## Author
 
 * **Nitin Paliwal** 
 
